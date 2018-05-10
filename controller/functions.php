@@ -1,6 +1,6 @@
 <?php
 
-require('../model/database.php');
+require '../model/database.php';
 
 function auth($email, $password){
 	global $conn;

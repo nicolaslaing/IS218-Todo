@@ -13,10 +13,11 @@
 	</head>
 
 	<script type="text/Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"">
+		$(document).ready(function(l){
 
-		$(document).ready(function(){
 			$("#add").click(function(){
-				var id = '<?php echo $_SESSION["id"] ?>';
+
+				var id = "<?php echo $_SESSION['id']; ?>";
 				console.log(id);
 
 				// function insertTodo(){

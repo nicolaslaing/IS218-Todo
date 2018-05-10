@@ -40,6 +40,6 @@ $_SESSION["id"] = $data[0];
 $_SESSION["email"] = $email;
 
 $message = "<fieldset>" . "Session ID: " . session_id() . "<br><br>Logged in. Transferring to Homepage</p></fieldset>";
-$target = "../view/todo.html"; // direct to PHP page to deposit/withdraw/show/mail
+$target = "../controller/todo.php"; // direct to PHP page to deposit/withdraw/show/mail
 redirect($message, $target, 3);
 ?>
