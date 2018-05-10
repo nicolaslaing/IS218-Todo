@@ -3,28 +3,27 @@
 
 	<head>
 
-		<link rel="stylesheet" href="styles.css">
-		<h1>Todo</h1><br />
+		<link rel="stylesheet" href="./styles.css">
+		<h1><a href="index.html">Todo</a><br>Login</h1>
 
 	</head>
 
 	<body>
 
-		<div id="container">
+		<form action="../controller/login.php" method="POST">
 
-			<form action="../controller/login.php" method="POST">
+			<fieldset id="fieldset">
+				Please enter the following information:<br><br><br>
+				<input type="text" name="email" autocomplete="off" placeholder="Enter Email" required><br>
+				<input type="text" name="pass" autocomplete="off" placeholder="Enter Password" required><br><br>
+				<input type="submit"><br>
 
-				<fieldset id="fieldset"><legend style="margin: auto">Login</legend>
+				<p>Need an account?</p>
+				<button><a href="register.html">Register</a></button>
 
-					<input type="text" name="email" autocomplete="off" placeholder="Enter Email" required><br />
-					<input type="text" name="pass" autocomplete="off" placeholder="Enter Password" required><br />
-					<input type="submit"><br />
+			</fieldset>
 
-				</fieldset>
-
-			</form>
-
-		</div>
+		</form>
 
 	</body>
 

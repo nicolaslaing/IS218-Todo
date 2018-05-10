@@ -8,51 +8,57 @@
 	<head>
 
 		<link rel="stylesheet" href="../view/styles.css">
-		<h1>Todo</h1><br />
+		<h1>Todo<br>Add Todo</h1><br />
 
 	</head>
 
-	<script type="text/Javascript">
+	<script type="text/Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"">
 
 		$(document).ready(function(){
-			$("#button").click(function(){
-				var s = $(".todo").val();
-				function insertTodo(){
+			$("#add").click(function(){
+				var id = '<?php echo $_SESSION["id"] ?>';
+				console.log(id);
 
-					$.ajax({
+				// function insertTodo(){
 
-						type: "POST",
-						url: "../controller/todohandler.php",
-						data: s,
+				// 	$.ajax({
 
-						success: function(result){
+				// 		type: "POST",
+				// 		url: "../controller/todohandler.php",
+				// 		data: id,
 
-							//id, owneremail, ownerid, createddate, duedate, message, isdone
-							var id;
-							var owneremail;
-							var ownerid;
-							var createddate;
-							var duedate;
-							var message;
-							var isdone;
+				// 		success: function(result){
 
-						}
+				// 			//id, owneremail, ownerid, createddate, duedate, message, isdone
+				// 			var id;
+				// 			var owneremail;
+				// 			var ownerid;
+				// 			var createddate;
+				// 			var duedate;
+				// 			var message;
+				// 			var isdone;
 
-					});
+				// 		}
 
-				}
+				// 	});
+
+				// }
+			});
+
+		});
 
 	</script>
 
 	<body>
 
-		<fieldset>
+		<fieldset><br>
 
-			<legend>Add Todo</legend>
-			<input type="text" class="todo" placeholder="Enter todo" />
-			<input type="submit" value="Add">
+			<input type="text" class="todoInput" placeholder="Enter todo" />
+			<input type="submit" id="add" value="Add">
 
-		</fieldset>
+			<p class="todo"></p>
+
+		</fieldset><br>
 
 		<center>
 

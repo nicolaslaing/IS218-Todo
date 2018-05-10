@@ -11,9 +11,9 @@ $_SESSION = array();
 session_destroy();
 
 if(!isset($_SESSION["logged"])){
-  $message = "<center><p>You have successfully logged out. Redirecting to login page.</p></center>";
+  $message = "<center><h1><p>You have successfully logged out. Redirecting to login page.</p></h1></center>";
   $target = "../view/login.html";
-  $delay = "3";
+  $delay = "2";
   redirect($message, $target, $delay);
 }
 else{

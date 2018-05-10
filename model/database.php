@@ -14,7 +14,7 @@ $dsn = "mysql:host=$host;dbname=$user";
 
 try {
     $conn = new PDO($dsn, $user, $password);
-    echo "<h1><center>Connected to database.</center></h1>";
+    echo "<script>console.log('Connected to database.')</script>";
 } catch(PDOException $e) {
     echo "<h1><center>Connection failed: " . $e->getMessage() . "</center></h1>";
 }

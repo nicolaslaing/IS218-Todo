@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
+
 		<link rel="stylesheet" href="styles.css">
-		<h1>Register</h1>
+		<h1><a href="index.html">Todo</a><br>Register</h1>
+
 	</head>
+
 	<body>
+
 		<fieldset>
+
 		<center>
+
 			<form action="../controller/register.php" method="POST">
-				Please enter the following information:<br /><br /><br />
-				<input type="text" name="fname" autocomplete="off" placeholder="First Name" required><br />
-				<input type="text" name="lname" autocomplete="off" placeholder="Last Name" required><br />
-				<input type="password" name="password" autocomplete="off" placeholder="Password" required><br />
-				<input type="email" name="email" autocomplete="off" placeholder="Email Address" required><br />
-				<input type="text" name="phone" autocomplete="off"  placeholder="Phone" required><br />
-				<input type="text" name="gender" autocomplete="off" placeholder="Gender" required><br /><br />
-				Birthday<br />
-				<input type="date" name="birthday" autocomplete="off" required><br />
+				Please enter the following information:<br><br><br>
+				<input type="text" name="fname" autocomplete="off" placeholder="First Name" required><br>
+				<input type="text" name="lname" autocomplete="off" placeholder="Last Name" required><br>
+				<input type="password" name="password" autocomplete="off" placeholder="Password" required><br>
+				<input type="email" name="email" autocomplete="off" placeholder="Email Address" required><br>
+				<input type="text" name="phone" autocomplete="off"  placeholder="Phone" required><br>
+				<input type="text" name="gender" autocomplete="off" placeholder="Gender" required><br><br>
+				Birthday<br>
+				<input type="date" name="birthday" autocomplete="off" required><br>
 				<input type="submit">
 			</form>
+
+			<p>Already a member?</p>
+			<button><a href="login.html">Login</a></button>
+
 		</center>
+
 		</fieldset>
+
 	</body>
+
 </html>

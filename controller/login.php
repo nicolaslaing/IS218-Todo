@@ -1,14 +1,11 @@
 <html>
+
 	<head>
+
 		<link rel="stylesheet" href="../view/styles.css">
+
 	</head>
-	<!-- Show result of authenticating after 1000 milliseconds -->
-<!-- 	<script>
-		function show(){
-			document.getElementById("show").style.display = "block";
-		};
-		setTimeout(show, 1000);
-	</script> -->
+
 </html>	
 <?php
 //****************************************************************************************
@@ -23,9 +20,6 @@ require '../model/database.php';
 require 'functions.php';
 
 //****************************************************************************************
-// GLOBALS
-$bad = false;
-//****************************************************************************************
 // INITIALIZATION
 $email = $_POST["email"];
 $pass = $_POST["pass"];
@@ -35,12 +29,17 @@ if(!auth($email, $pass)){
 	$message = "<fieldset><p>Please enter a valid username or password.</p></fieldset>";
 	$target = "../view/login.html";
 	redirect($message, $target, 3);
+
 }
 
+$data = getData($email);
+//json_encode($data);
+
 $_SESSION["logged"] = true;
+$_SESSION["id"] = $data[0];
 $_SESSION["email"] = $email;
 
-$message = "<fieldset>" . session_id() . "<br /><br />Logged in. Transferring to Homepage</p></fieldset>";
+$message = "<fieldset>" . "Session ID: " . session_id() . "<br><br>Logged in. Transferring to Homepage</p></fieldset>";
 $target = "../view/todo.html"; // direct to PHP page to deposit/withdraw/show/mail
 redirect($message, $target, 3);
 ?>

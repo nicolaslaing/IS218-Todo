@@ -13,13 +13,28 @@ function auth($email, $password){
 	$r->execute();
 
 	$numRows = $r->fetchColumn();
-	print "<p id='auth' style='text-align: center; font-size: 150%'>Authenticating...</p><br />";
+	print "<h1>Authenticating...</h1><br>";
 	if($numRows != 0){
 		return true;
 	}
 	else{
 		return false;
 	}
+}
+function getData($email){
+
+	global $conn;
+	
+	$query = "SELECT * FROM accounts WHERE email=:email";
+
+	$r = $conn->prepare($query);
+	$r->bindValue(":email", $email);
+	$r->execute();
+
+	$result = $r->fetch();
+
+	return $result;
+
 }
 function gatekeeper(){
 	// check if $_SESSION["logged"] = true
