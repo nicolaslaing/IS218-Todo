@@ -1,0 +1,14 @@
+h1 {
+	text-align: center;
+	background-color: tomato;
+}
+fieldset {
+	width: 50%;
+	text-align: center;
+}
+input {
+	margin: 3px;
+}
+html {
+	background-color: grey;
+}
