@@ -38,6 +38,8 @@ $data = getData($email);
 $_SESSION["logged"] = true;
 $_SESSION["id"] = $data[0];
 $_SESSION["email"] = $email;
+$_SESSION["fname"] = $data[2];
+$_SESSION["lname"] = $data[3];
 
 $message = "<fieldset>" . "Session ID: " . session_id() . "<br><br>Logged in. Transferring to Homepage</p></fieldset>";
 $target = "../controller/todo.php"; // direct to PHP page to deposit/withdraw/show/mail
