@@ -18,7 +18,9 @@ function insertTodo(){
 	$.ajax({
 
 		type: "POST",
-		url: "../controller/todohandler.php",
+		url: "todohandler.php",
+		dataType: "text",
+		contentType: "application/json",
 		data: {
 
 			id: id,
@@ -34,7 +36,15 @@ function insertTodo(){
 
 		success: function(result) {
 
-			//var result = JSON.parse(result);
+			var result = JSON.parse(result);
+			console.log(result);
+			var id;
+			var owneremail;
+			var ownerid;
+			var createddate;
+			var duedate;
+			var isdone;
+
 			var output;
 
 			output = "<table border='1'>";
@@ -49,21 +59,21 @@ function insertTodo(){
 
 
 			//id, owneremail, ownerid, createddate, duedate, message, isdone
-			//for(var index in result){
+			// for(var index in result){
 
-				// var id = result[index].id;
-				// var owneremail = result[index].owneremail;
-				// var ownerid = result[index].ownerid;
-				// var createddate = result[index].createddate;
-				// var duedate = result[index].duedate;
-				// var isdone = result[index].isdone;
+				// id = result[index].id;
+				// owneremail = result[index].owneremail;
+				// ownerid = result[index].ownerid;
+				// createddate = result[index].createddate;
+				// duedate = result[index].duedate;
+				// isdone = result[index].isdone;
 
-				var id = result[0].id;
-				var owneremail = result[0].owneremail;
-				var ownerid = result[0].ownerid;
-				var createddate = result[0].createddate;
-				var duedate = result[0].duedate;
-				var isdone = result[0].isdone;
+				id = result[0].TodoID;
+				owneremail = result[0].owneremail;
+				ownerid = result[0].ownerid;
+				createddate = result[0].createddate;
+				duedate = result[0].duedate;
+				isdone = result[0].isdone;
 
 				output += "<tr>";
 				output += "<td>" + id + "</td>";
@@ -76,7 +86,7 @@ function insertTodo(){
 
 				$("#incomplete").html($("#incomplete").html() + output);
 
-			//}
+			// }
 
 			output += "</table>";
 
@@ -86,4 +96,36 @@ function insertTodo(){
 
 	}); // ajax
 
-} // insertTodo()
+} // insertTodo
+function deleteTodo(){
+
+	var id = $("#session_id").val();
+	var todoID = $("").val();
+
+	console.log(id);
+	$.ajax({
+
+		type: "POST",
+		url: "../controller/todohandler.php",
+		data: {
+
+			id: id,
+
+		},
+
+		error: function(xhr, status, error){
+
+			alert("Error: \r\nNumeric code is: " + xhr.status + "\r\nError is: " + error);
+
+		},
+
+		success: function(result) {
+
+			$("#delete").html("");
+			$("#delete").html("Task deleted");
+
+		} // success
+
+	}); // ajax
+
+} // deleteTodo()
