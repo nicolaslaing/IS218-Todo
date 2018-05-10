@@ -1,23 +1,11 @@
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../view/styles.css">
 <?php
 //****************************************************************************************
 //DATABASE CONNECTION
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);  
 ini_set('display_errors' , 1);
-
-$user = "nal9";
-$password = "Movlksomh123";
-$host = "sql1.njit.edu";
-
-$dsn = "mysql:host=$host;dbname=$user";
-
-try {
-    $conn = new PDO($dsn, $user, $password);
-    echo "<h1><center>Connected to database.</center></h1>";
-} catch(PDOException $e) {
-    echo "<h1><center>Connection failed: " . $e->getMessage() . "</center></h1>";
-}
-//$conn = null;
+require '../model/database.php';
+require 'functions.php';
 
 //****************************************************************************************
 //Find most recent ID number, and add 1 for the newest user
@@ -54,22 +42,10 @@ $resultIn->execute(array(
 ));
 //END INSERTION
 
-//Select most recent row for proof that the data was inserted into the table
-$s = "SELECT * FROM accounts WHERE id=$id";
-$result = $conn->prepare($s);
-$result->execute();
+$message = "<fieldset><center>Successfully registered, redirecting in 3 seconds</center></fieldset>";
+$target = "../view/login.html";
+$delay = 3;
 
-$row = $result->fetch();
-	$out = "<fieldset><center><legend>You have successfully registered!<br /><br /></legend></center>";
-	$out .= "<center><div>";
-	$out .= "First name: " . $row['fname'] . "<br />";
-	$out .= "Last name: " . $row['lname'] . "<br />";
-	$out .= "Email: " . $row['email'] . "<br />";
-	$out .= "Phone: " . $row['phone'] . "<br />";
-	$out .= "Birthday: " . $row['birthday'] . "<br />";
-	$out .= "Gender: " . $row['gender'] . "<br /></div></center></fieldset>";
-echo $out;
+redirect($message, $target, $delay);
 
-$result->closeCursor();
-//END DATABASE PROOF
 ?>

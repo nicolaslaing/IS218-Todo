@@ -1,0 +1,69 @@
+<?php
+	session_start();
+	gatekeeper();
+?>
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<link rel="stylesheet" href="../view/styles.css">
+		<h1>Todo</h1><br />
+
+	</head>
+
+	<script type="text/Javascript">
+
+		$(document).ready(function(){
+			$("#button").click(function(){
+				var s = $(".todo").val();
+				function insertTodo(){
+
+					$.ajax({
+
+						type: "POST",
+						url: "../controller/todohandler.php",
+						data: s,
+
+						success: function(result){
+
+							//id, owneremail, ownerid, createddate, duedate, message, isdone
+							var id;
+							var owneremail;
+							var ownerid;
+							var createddate;
+							var duedate;
+							var message;
+							var isdone;
+
+						}
+
+					});
+
+				}
+
+	</script>
+
+	<body>
+
+		<fieldset>
+
+			<legend>Add Todo</legend>
+			<input type="text" class="todo" placeholder="Enter todo" />
+			<input type="submit" value="Add">
+
+		</fieldset>
+
+		<center>
+
+			<form action="../controller/logout.php">
+
+				<input type="submit" value="Logout">
+
+			</form>
+
+		</center>
+
+	</body>
+
+</html>

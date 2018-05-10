@@ -1,23 +1,41 @@
 <?php
-//ERROR CHECKING
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);  
-ini_set('display_errors' , 1);
 
-//****************************************************************************************
-//DATABASE CONNECTION
+require('../model/database.php');
 
-$user = "nal9";
-$password = "Movlksomh123";
-$host = "sql1.njit.edu";
+function auth($email, $password){
+	global $conn;
+	
+	$query = "SELECT * FROM accounts WHERE email=:email AND password=:password";
 
-$dsn = "mysql:host=$host;dbname=$user";
+	$r = $conn->prepare($query);
+	$r->bindValue(":email", $email);
+	$r->bindValue(":password", $password);
+	$r->execute();
 
-try {
-    $conn = new PDO($dsn, $user, $password);
-    echo "<h1><center>Connected to database.</center></h1>";
-} catch(PDOException $e) {
-    echo "<h1><center>Connection failed: " . $e->getMessage() . "</center></h1>";
+	$numRows = $r->fetchColumn();
+	print "<p id='auth' style='text-align: center; font-size: 150%'>Authenticating...</p><br />";
+	if($numRows != 0){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
+function gatekeeper(){
+	// check if $_SESSION["logged"] = true
+	if(!isset($_SESSION["logged"])){
+		$message = "<p class='stnrd'>Undefined Login.</p>";
+		$target = "login.html";
+		$delay = 3;
+		redirect($message, $target, $delay);
+	}
+}
+function redirect($message, $target, $delay){
 
-//****************************************************************************************
+	echo $message;
+	header("refresh: $delay, url = $target");
+
+	exit();
+
+}
 ?>
