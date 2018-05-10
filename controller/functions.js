@@ -1,9 +1,3 @@
-<?php 
-
-	start_session();
-
-?>
-
 $(document).ready(function(){
 
 	$("#add").click(function(){
@@ -15,8 +9,8 @@ $(document).ready(function(){
 }); // ready
 
 function insertTodo(){
-	
-	var id = "<?php echo $_SESSION['id']; ?>";
+
+	var id = $("#session_id").val();
 	var message = $("#todoInput").val();
 
 	console.log(id);
@@ -40,7 +34,7 @@ function insertTodo(){
 
 		success: function(result) {
 
-			var result = JSON.parse(result);
+			//var result = JSON.parse(result);
 			var output;
 
 			output = "<table border='1'>";
@@ -55,14 +49,21 @@ function insertTodo(){
 
 
 			//id, owneremail, ownerid, createddate, duedate, message, isdone
-			for(var index in result){
+			//for(var index in result){
 
-				var id = result[0];
-				var owneremail = result[1];
-				var ownerid = result[2];
-				var createddate = result[3];
-				var duedate = result[4];
-				var isdone = result[5];
+				// var id = result[index].id;
+				// var owneremail = result[index].owneremail;
+				// var ownerid = result[index].ownerid;
+				// var createddate = result[index].createddate;
+				// var duedate = result[index].duedate;
+				// var isdone = result[index].isdone;
+
+				var id = result[0].id;
+				var owneremail = result[0].owneremail;
+				var ownerid = result[0].ownerid;
+				var createddate = result[0].createddate;
+				var duedate = result[0].duedate;
+				var isdone = result[0].isdone;
 
 				output += "<tr>";
 				output += "<td>" + id + "</td>";
@@ -73,13 +74,13 @@ function insertTodo(){
 				output += "<td>" + isdone + "</td>";
 				output += "</tr>";
 
-				$(".todo").html($(".todo").html() + output);
+				$("#incomplete").html($("#incomplete").html() + output);
 
-			}
+			//}
 
 			output += "</table>";
 
-			$(".todo").html($(".todo").html() + output);
+			$("#incomplete").html($("#incomplete").html() + output);
 
 		} // success
 

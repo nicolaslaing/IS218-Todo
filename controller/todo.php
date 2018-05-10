@@ -12,7 +12,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="functions.js"></script>
 		<link rel="stylesheet" href="../view/styles.css">
+
 		<h1>Todo<br>Add Todo</h1><br>
+
+		<input id="session_id" type="hidden" value=<?php echo $_SESSION['id'] ?> />
 
 	</head>
 
